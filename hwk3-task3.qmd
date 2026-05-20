@@ -1,0 +1,20 @@
+---
+title: "Task 3: Considerations in High Dimensions"
+author: "Patrick Norton"
+date: today
+format: html
+---
+
+This document identifies a concept from section 6.4 of "An Introduction to Statistical Learning with Applications in Python" that I sought clarification on using a generative AI tool, and reflects on that process.
+
+## Concept to Clarify
+
+Section 6.4 explains that ordinary least squares (OLS) will perfectly interpolate training data when the number of predictors (p) is greater than or equal to the number of observations (n), producing a training R² of 1 and a training MSE of 0 even when no true relationship exists between the predictors and the response. What I did not fully understand was the mechanical reason why OLS is guaranteed to achieve this perfect fit, and how this situation differs from ordinary overfitting in low dimensional settings where adding too many predictors simply makes the model too flexible.
+
+## Prompt
+
+> I am a graduate student in a statistical learning course reading section 6.4 ("Considerations in High Dimensions") in "An Introduction to Statistical Learning with Applications in Python". I understand that OLS produces a perfect training fit when the number of predictors equals or exceeds the number of observations, but I do not understand the mechanical reason why. Could you explain this using a concrete small numerical example, such as 2 observations and 3 predictors, without using matrix algebra? Please also explain how this differs from ordinary overfitting in a low dimensional setting, such as adding too many polynomial terms to a regression.
+
+## Generative AI Reflection
+
+I used Claude Opus 4.7 on Adaptive Reasoning to clarify this concept, submitting the prompt written above as my first query. The response explained the concept through a small numerical example involving two observations and three predictors, showing that with more unknowns than equations there are infinitely many solutions and OLS simply finds the one with zero residuals. That framing was immediately helpful, and I only needed one follow-up asking it to spell out why this differs from adding polynomial terms in a low dimensional setting, which it addressed by distinguishing between a system that is underdetermined by construction versus one that is merely overfit through model choice. Two iterations total were enough to resolve my confusion. The explanation aligned well with what the textbook described, though the AI gave a more intuitive walkthrough than the text than I found which relies more heavily on the implications for test error than on the geometric or algebraic reason for the perfect training fit.
